@@ -1,0 +1,145 @@
+#AddReportCategoryButton {
+    background-color: #00376A;
+    color: white; /* Maintained white color for contrast */
+    border-radius: 5px;
+    padding: 8px 12px; /* Changed padding to match AddDepartmentButton */
+    width: 140px; /* Adjusted width to match AddDepartmentButton */
+    height: 40px; /* Adjusted height to match AddDepartmentButton */
+    font-size: 15px; 
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease; 
+}
+
+#AddReportCategoryButton:hover {
+    background-color: #005bb5; 
+    box-shadow: 0 4px 10px rgba(0, 91, 181, 0.3); 
+}
+
+  
+  #ReportCategoryHeader {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff;
+    height: 80px;
+    padding: 20px 30px;
+    margin-top: 80px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    color: #00376A; /* Text color matching button */
+  }
+  
+  .header-label {
+    font-size: 16px;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #00376A;
+  }
+  
+  .header-select {
+    margin-right: 15px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #eef5ff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .header-select:hover {
+    background-color: #d6e7ff;
+    border-color: #005bb5;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 45px;
+    background-color: #eef5ff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="text"], input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus, input[type="search"]:focus {
+    border-color: #005bb5;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 91, 181, 0.2);
+  }
+  
+  .error-message {
+    color: #ff4c4c;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Additional Styles */
+  #ReportCategoryHeader h1 {
+    font-size: 22px;
+    color: #00376A;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .button-group button {
+    margin-left: 10px;
+  }
+  
+  .info-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+    font-style: italic;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #00376A;
+    color: white;
+  }
+  
+  td {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #eef5ff;
+  }
+  

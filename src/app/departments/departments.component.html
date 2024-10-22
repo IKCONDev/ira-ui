@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+            <button id="AddDepartmentButton" type="button" style="margin-left: 10px;" data-toggle="modal" data-target="#exampleModalAddDepartment">
+                Add Department
+            </button>
+            <svg width="40" style="margin-left: 20px;" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                
+            </svg>
+        </div>
+    </div>
+    
+    <div class="row mt">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">DepartmentId</th>
+                        <th scope="col">DepartmentName</th>
+                        <th scope="col">DepartmentStatus</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let department of departments">
+                        <td>{{ department.departmentId }}</td>
+                        <td>{{ department.departmentName }}</td>
+                        <td>{{ department.departmentStatus }}</td>
+                        <td>
+                            <button (click)="getDepartmentById(department.departmentId)" data-toggle="modal" data-target="#exampleModals" class="btn btn-link" aria-label="Edit">
+                                <svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 528.899 528.899" xml:space="preserve">
+                                    <g>
+                                        <path d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </td>
+                        <td>
+                            <button (click)="deleteDepartment(department.departmentId)" class="btn btn-link" aria-label="Delete">
+                                <svg width="24" height="24" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.7656 14.2148H13.7656H29.7656" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M27.7656 14.2148V28.2148C27.7656 28.7453 27.5549 29.254 27.1798 29.6291C26.8048 30.0041 26.2961 30.2148 25.7656 30.2148H15.7656C15.2352 30.2148 14.7265 30.0041 14.3514 29.6291C13.9763 29.254 13.7656 28.7453 13.7656 28.2148V14.2148M16.7656 14.2148V12.2148C16.7656 11.6844 16.9763 11.1757 17.3514 10.8006C17.7265 10.4256 18.2352 10.2148 18.7656 10.2148H22.7656C23.2961 10.2148 23.8048 10.4256 24.1798 10.8006C24.5549 11.1757 24.7656 11.6844 24.7656 12.2148V14.2148" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18.7656 19.2148V25.2148" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M22.7656 19.2148V25.2148" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Update Department Modal -->
+<div class="modal fade" id="exampleModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #00376A;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Update Department</h5>
+                <button type="button" class="close" style="color: white;" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="DepartmentId">Department ID<span class="required">:</span></label>
+                    <input type="text" name="departmentId" id="departmentId" 
+                    placeholder="Enter DepartmentId" class="form-control" [(ngModel)]="updatedDepartment.departmentId" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="departmentName">Department Name<span class="required">:</span></label>
+                    <input type="text" name="departmentName" id="departmentName" placeholder="Enter department name" class="form-control" (keyup)="departmentNameChange()" [(ngModel)]="updatedDepartment.departmentName">
+
+                </div>
+                <div class="form-group">
+                    <label for="departmentStatus">Department Status<span class="required">:</span></label>
+                    <input type="text" name="departmentStatus" id="departmentStatus" placeholder="Enter department status" class="form-control" [(ngModel)]="updatedDepartment.departmentStatus" (keyup)="departmentStatusChange()">
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateDepartment1(updatedDepartment.departmentId, updatedDepartment)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Department Modal -->
+<div class="modal fade" id="exampleModalAddDepartment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(15, 65, 228);">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Add Department</h5>
+                <button type="button" style="color: white;" (click)="CancelButton()" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="departmentName">Department Name<span class="required">:</span></label>
+                    <input type="text" name="departmentName" id="departmentName" placeholder="Enter department name" class="form-control" [(ngModel)]="department.departmentName">
+             
+                </div>
+                <div class="form-group">
+                    <label for="departmentStatus">Department Status<span class="required">:</span></label>
+                    <input type="text" name="departmentStatus" id="departmentStatus" placeholder="Enter department status" class="form-control" [(ngModel)]="department.departmentStatus" >
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="SaveDepartment()" class="btn btn-primary" style="width: 45%; margin-bottom: 20px;">Add</button>
+                <button type="button"  (click)="CancelButton()" class="btn btn-danger" style="width: 45%; margin-left: 5%; margin-bottom: 20px;" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

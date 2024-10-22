@@ -1,0 +1,10 @@
+<div class="otp-container">
+    <h1 id="VerifyOtp">Verify OTP</h1>
+    <input type="text" class="form-control" placeholder="Enter email" [(ngModel)]="email" name="email">
+    <input type="text" class="form-control" placeholder="Enter OTP" [(ngModel)]="otp" name="otp">
+    <div class="button-container">
+        <button id="VerifyOtpButton" type="button" (click)="onVerifyOtp()">Verify OTP</button>
+    </div>
+    <div class="alert alert-success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>

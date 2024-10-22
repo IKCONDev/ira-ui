@@ -1,0 +1,427 @@
+<!-- Button trigger modal -->
+<div class="button-container"
+    style="display: flex; justify-content: flex-start; margin-top: 100px; padding-left: 20px;">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reportModal"
+        style="padding: 10px 15px; font-size: 16px; width: 150px;">
+        Add Report
+    </button>
+</div>
+<br>
+
+<!-- Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="reportModalLabel">Report Form</h1> 
+                <style>
+                    .modal-title {
+                        text-align: center; 
+                    }
+                </style>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm" class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportId"><strong>Report ID</strong> 
+                                    <span class="required">:</span></label>
+                                <input type="number" id="reportId" name="reportId" class="form-control" required [(ngModel)]="report.reportId">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="priority"> <strong>Priority</strong> <span class="required">:</span></label>
+                                <input type="text" id="priority" name="priority" class="form-control" required [(ngModel)]="report.priority">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportName"><strong>Report Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportName" name="reportName" class="form-control" required [(ngModel)]="report.reportName">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportType"><strong>Report Type</strong><span class="required">:</span></label>
+                                <select name="reportType" id="reportType" class="form-control" required [(ngModel)]="report.reportType">
+                                    <option *ngFor="let category of reportCategories" [value]="category.reportcategoryId">
+                                              {{ category.reportcategoryName}}
+                                      </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportDescription"><strong>Report Description</strong> <span class="required">:</span></label>
+                                <textarea id="reportDescription" name="reportDescription" class="form-control" required [(ngModel)]="report.reportDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="departmentName"><strong>Department Name</strong> <span class="required">:</span></label>
+                                <select name="departmentName" id="departmentName" class="form-control" required [(ngModel)]="report.departmentName">
+                                    <option *ngFor="let department of departments" [value]="department.departmentId">
+                                      
+                                        {{ department.departmentName}}
+                                      </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportGeneratedForm"><strong>Report Generated Form</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportGeneratedForm" name="reportGeneratedForm" class="form-control" required [(ngModel)]="report.reportGeneratedForm">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportFrequency"><strong>Report Frequency</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportFrequency" name="reportFrequency" class="form-control" required [(ngModel)]="report.reportFrequency">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="bussinessOwner"><strong>Business Owner</strong> <span class="required">:</span></label>
+                                <input type="text" id="bussinessOwner" name="bussinessOwner" class="form-control" required [(ngModel)]="report.bussinessOwner">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="itOwner"><strong>IT Owner</strong> <span class="required">:</span></label>
+                                <input type="text" id="itOwner" name="itOwner" class="form-control" required [(ngModel)]="report.itOwner">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qaOwner"><strong> QA Owner</strong><span class="required">:</span></label>
+                                <input type="text" id="qaOwner" name="qaOwner" class="form-control" required [(ngModel)]="report.qaOwner">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="developerName"><strong>Developer Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="developerName" name="developerName" class="form-control" required [(ngModel)]="report.developerName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="bussinessAnalystName"><strong>Business Analyst Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="bussinessAnalystName" name="bussinessAnalystName" class="form-control" required [(ngModel)]="report.bussinessAnalystName">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qualityAssuranceName"><strong> Quality Assurance Name</strong><span class="required">:</span></label>
+                                <input type="text" id="qualityAssuranceName" name="qualityAssuranceName" class="form-control" required [(ngModel)]="report.qualityAssuranceName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="itLead"><strong>IT Lead</strong> <span class="required">:</span></label>
+                                <input type="text" id="itLead" name="itLead" class="form-control" required [(ngModel)]="report.itLead">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qaLead"><strong>QA Lead</strong> <span class="required">:</span></label>
+                                <input type="text" id="qaLead" name="qaLead" class="form-control" required [(ngModel)]="report.qaLead">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportVersion"><strong>Report Version</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportVersion" name="reportVersion" class="form-control" required [(ngModel)]="report.reportVersion">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="releaseDate"><strong>Release Date</strong> <span class="required">:</span></label>
+                                <input type="datetime-local" id="releaseDate" name="releaseDate" class="form-control" required [(ngModel)]="report.releaseDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="comments"><strong>Comments:</strong> </label>
+                                <textarea id="comments" name="comments" class="form-control" required [(ngModel)]="report.comments"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between" style="width: 100%;">
+                        <button type="button" class="btn btn-primary" (click)="submitReport()" 
+style="width: 25%; margin-left: 10%; margin-bottom: 30px;">Submit </button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal"
+        style="width: 25%; margin-left: 10%; margin-bottom: 30px;">Close</button>
+
+                    </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+
+<!-- Table with reports -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Report ID</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Report Name</th>
+                    <th scope="col">Report Type</th>
+                    <th scope="col">Report Description</th>
+                    <th scope="col">Department Name</th>
+                    <th scope="col">Report Generated Form</th>
+                    <th scope="col">Report Frequency</th>
+                    <th scope="col">Business Owner</th>
+                    <th scope="col">IT Owner</th>
+                    <th scope="col">QA Owner</th>
+                    <th scope="col">Developer Name</th>
+                    <th scope="col">Business Analyst Name</th>
+                    <th scope="col">Quality Assurance Name</th>
+                    <th scope="col">IT Lead</th>
+                    <th scope="col">QA Lead</th>
+                    <th scope="col">Report Version</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Comments</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of reports">
+                    <td>{{report.reportId}}</td>
+                    <td>{{report.priority}}</td>
+                    <td>{{report.reportName}}</td>
+                    <td>{{report.reportType}}</td>
+                    <td>{{report.reportDescription}}</td>
+                    <td>{{report.departmentName}}</td>
+                    <td>{{report.reportGeneratedForm}}</td>
+                    <td>{{report.reportFrequency}}</td>
+                    <td>{{report.bussinessOwner}}</td>
+                    <td>{{report.itOwner}}</td>
+                    <td>{{report.qaOwner}}</td>
+                    <td>{{report.developerName}}</td>
+                    <td>{{report.bussinessAnalystName}}</td>
+                    <td>{{report.qualityAssuranceName}}</td>
+                    <td>{{report.itLead}}</td>
+                    <td>{{report.qaLead}}</td>
+                    <td>{{report.reportVersion}}</td>
+                    <td>{{report.releaseDate}}</td>
+                    <td>{{report.comments}}</td>
+                    <td>
+                        <button (click)="getReportById(report.reportId)" data-toggle="modal"
+                            data-target="#updateReportModal" class="btn btn-link" aria-label="Edit">
+                            <svg fill="#000000" version="1.1" xmlns="http://www.w3.org/2000/svg" width="15px"
+                                height="15px" viewBox="0 0 528.899 528.899" xml:space="preserve">
+                                <g>
+                                    <path
+                                        d="M328.883,89.125l107.59,107.589l-272.34,272.34L56.604,361.465L328.883,89.125z M518.113,63.177l-47.981-47.981 c-18.543-18.543-48.653-18.543-67.259,0l-45.961,45.961l107.59,107.59l53.611-53.611 C532.495,100.753,532.495,77.559,518.113,63.177z M0.3,512.69c-1.958,8.812,5.998,16.708,14.811,14.565l119.891-29.069 L27.473,390.597L0.3,512.69z" />
+                                </g>
+                            </svg>
+                        </button>
+                    </td>
+                    <td>
+                        <button (click)="deleteReport(report.reportId)" class="btn btn-link" aria-label="Delete">
+                            <svg width="24" height="24" viewBox="0 0 41 41" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.7656 14.2148H13.7656H29.7656" stroke="black" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M27.7656 14.2148V28.2148C27.7656 28.7453 27.5549 29.254 27.1798 29.6291C26.8048 30.0041 26.2961 30.2148 25.7656 30.2148H15.7656C15.2352 30.2148 14.7265 30.0041 14.3514 29.6291C13.9763 29.254 13.7656 28.7453 13.7656 28.2148V14.2148M16.7656 14.2148V12.2148C16.7656 11.6844 16.9763 11.1757 17.3514 10.8006C17.7265 10.4256 18.2352 10.2148 18.7656 10.2148H22.7656C23.2961 10.2148 23.8048 10.4256 24.1798 10.8006C24.5549 11.1757 24.7656 11.6844 24.7656 12.2148V14.2148"
+                                    stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M18.7656 19.2148V25.2148" stroke="black" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M22.7656 19.2148V25.2148" stroke="black" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+<!-- update -->
+<div class="modal fade" id="updateReportModal" tabindex="-1" role="dialog" aria-labelledby="updateReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between align-items-center">
+                <h1 class="modal-title" id="updateReportModalLabel" style="font-size: 35px; text-align: left;">Update Report Form</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 20px;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+
+            <div class="modal-body">
+                <form id="editReportForm" class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportId"><strong>Report ID</strong> <span class="required">:</span></label>
+                                <input type="number" id="reportId" name="reportId" class="form-control" required [(ngModel)]="updatedData.reportId" readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="priority"><strong>Priority</strong><span class="required">:</span></label>
+                                <input type="text" id="priority" name="priority" class="form-control" required [(ngModel)]="updatedData.priority">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportName"><strong>Report Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportName" name="reportName" class="form-control" required [(ngModel)]="updatedData.reportName">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportType"><strong> Report Type</strong><span class="required">:</span></label>
+                                <input type="text" id="reportType" name="reportType" class="form-control" required [(ngModel)]="updatedData.reportType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportDescription"><strong>Report Description</strong> <span class="required">:</span></label>
+                                <textarea id="reportDescription" name="reportDescription" class="form-control" required [(ngModel)]="updatedData.reportDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <label for="departmentName"><strong>Department Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="departmentName" name="departmentName" class="form-control" required [(ngModel)]="updatedData.departmentName">
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportGeneratedForm"><strong>Report Generated Form</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportGeneratedForm" name="reportGeneratedForm" class="form-control" required [(ngModel)]="updatedData.reportGeneratedForm">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportFrequency"><strong>Report Frequency</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportFrequency" name="reportFrequency" class="form-control" required [(ngModel)]="updatedData.reportFrequency">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="bussinessOwner"><strong>Business Owner</strong> <span class="required">:</span></label>
+                                <input type="text" id="bussinessOwner" name="bussinessOwner" class="form-control" required [(ngModel)]="updatedData.bussinessOwner">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="itOwner"><strong> IT Owner</strong><span class="required">:</span></label>
+                                <input type="text" id="itOwner" name="itOwner" class="form-control" required [(ngModel)]="updatedData.itOwner">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qaOwner"><strong>QA Owner</strong> <span class="required">:</span></label>
+                                <input type="text" id="qaOwner" name="qaOwner" class="form-control" required [(ngModel)]="updatedData.qaOwner">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="developerName"><strong>Developer Name</strong><span class="required">:</span></label>
+                                <input type="text" id="developerName" name="developerName" class="form-control" required [(ngModel)]="updatedData.developerName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="bussinessAnalystName"><strong> Business Analyst Name</strong><span class="required">:</span></label>
+                                <input type="text" id="bussinessAnalystName" name="bussinessAnalystName" class="form-control" required [(ngModel)]="updatedData.bussinessAnalystName">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qualityAssuranceName"><strong>Quality Assurance Name</strong> <span class="required">:</span></label>
+                                <input type="text" id="qualityAssuranceName" name="qualityAssuranceName" class="form-control" required [(ngModel)]="updatedData.qualityAssuranceName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="itLead"><strong>IT Lead</strong> <span class="required">:</span></label>
+                                <input type="text" id="itLead" name="itLead" class="form-control" required [(ngModel)]="updatedData.itLead">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="qaLead"><strong>QA Lead</strong> <span class="required">:</span></label>
+                                <input type="text" id="qaLead" name="qaLead" class="form-control" required [(ngModel)]="updatedData.qaLead">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reportVersion"><strong>Report Version</strong> <span class="required">:</span></label>
+                                <input type="text" id="reportVersion" name="reportVersion" class="form-control" required [(ngModel)]="updatedData.reportVersion">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="releaseDate"><strong> Release Date</strong><span class="required">:</span></label>
+                                <input type="datetime-local" id="releaseDate" name="releaseDate" class="form-control" required [(ngModel)]="updatedData.releaseDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="comments"><strong> Comments:</strong></label>
+                                <textarea id="comments" name="comments" class="form-control" [(ngModel)]="updatedData.comments"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between" style="width: 100%;">
+                        <button type="submit" class="btn btn-primary" (click)="updateReport()" style="width: 25%; margin-left: 10%; margin-bottom: 30px;">Update Report</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width: 25%; margin-left: 10%; margin-bottom: 30px;">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
